@@ -17,10 +17,16 @@ class CalculatorTest {
     }
 
     @Test
-    void divide_DevideByZero_expectingException(){
+    void divide_DevideByZero_expectingInfinity(){
         Calculator calculator = new Calculator();
-        assertThrows(IllegalArgumentException.class, ()->{
-            calculator.divide(2, 0);
+        assertTrue(Double.isInfinite(calculator.divide(2, 0)));
+
+    }
+    @Test
+    void divideUnsupportingInfinity_DevideByZero_expectingException() {
+        Calculator calculator = new Calculator();
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.divideUnsupportingInfinity(2, 0);
         });
     }
 }
