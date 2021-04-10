@@ -10,4 +10,8 @@ public class Calculator {
         if(b==0 ) throw new IllegalArgumentException("don't devide by 0");
         return a / b;
     }
+
+    public boolean isNegative(int a){
+        return a < 0;
+    }
 }

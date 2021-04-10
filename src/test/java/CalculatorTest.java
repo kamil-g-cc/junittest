@@ -1,13 +1,35 @@
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
     private Calculator calculator;
+    @AfterAll
+    static void end(){
+        System.out.println("Finished testing Calculator!");
+    }
+
+    @BeforeAll
+    static void start(){
+        System.out.println("Starting Calculator testing...");
+    }
+
+
     @BeforeEach
     void init(){
         calculator = new Calculator();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-2, -3, -1, -4})
+    void isNegative_NegativeNumbers_expectingTrue(int a){
+        assertTrue(calculator.isNegative(a));
     }
 
     @Test
