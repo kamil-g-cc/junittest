@@ -15,4 +15,12 @@ class CalculatorTest {
         Calculator calculator = new Calculator();
         assertTrue(calculator.add(2,2)>0);
     }
+
+    @Test
+    void divide_DevideByZero_expectingException(){
+        Calculator calculator = new Calculator();
+        assertThrows(IllegalArgumentException.class, ()->{
+            calculator.divide(2, 0);
+        });
+    }
 }
